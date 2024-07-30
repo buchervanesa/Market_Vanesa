@@ -1,0 +1,13 @@
+export interface ICardProps {
+    id: number;
+    name: string;
+    price: number;
+    description: string;
+    image: string;
+    stock: number;
+    categoryId: number;
+}
+
+// export interface ICardListProps {
+//     cards: ICardProps[];
+// }
