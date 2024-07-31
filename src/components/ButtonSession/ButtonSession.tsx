@@ -2,14 +2,14 @@
 import React from "react";
 import { useAuth } from "@/Context/AuthContext";
 import Link from "next/link";
-import  push  from "next/navigation";
-import { useRouter } from "next/navigation";
+
+
 
 
 export const ButtonSession = () => {
  
     const {token, setToken, DataUser} = useAuth();
-    const router = push
+  
 
     
    const LogOutHandler = () => {
