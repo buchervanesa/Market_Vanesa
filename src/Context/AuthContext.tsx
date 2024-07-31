@@ -3,7 +3,7 @@
 import { createContext, useContext, useState, useEffect } from 'react';
 
 interface userSessionProps {
-    id: any;
+    id?: any;
     token: string 
     DataUser: {
         
@@ -19,7 +19,7 @@ interface userSessionProps {
 }
 
 interface AuthContextProps {
-    DataUser: userSessionProps
+    DataUser: userSessionProps | null
     setUserData: (data: userSessionProps | null ) => void
     token: string | null
     setToken: (token: string | null) => void
