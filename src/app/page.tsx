@@ -9,12 +9,12 @@ import {useState} from "react";
 
 
 export default function Home() {
-  const [token, setToken] = useState(localStorage.getItem('userToken')?? null);
+  
 
   
   return (
     <div>
-      <NavBar token={token} setToken={setToken}/>
+      <NavBar token={""} setToken={""}/>
       <HomeComponent/>
       
      

@@ -1,9 +1,14 @@
 
 'use client';
-import ButtonSession from "../../components/ButtonSession/ButtonSession"
+import ButtonSession from "../ButtonSession/ButtonSession"
 import { useState } from "react";
 
-export const NavBar = () => {
+
+interface navbarProps {
+  token: string,
+  setToken: string
+}
+export const NavBar : React.FC<navbarProps> = ()  => {
   const [isOpen, setIsOpen] = useState(false);
   const [token] = useState(localStorage.getItem("userToken") || null);
 
