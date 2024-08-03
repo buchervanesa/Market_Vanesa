@@ -4,6 +4,7 @@ import "./globals.css";
 import NavBar from "../components/NavBar/NavBar";
 import {Footer} from "../components/Footer/Footer";
 import { AuthProvider } from "@/Context/AuthContext";
+import { useState } from "react";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -25,7 +26,9 @@ export default function RootLayout({
     <html lang="en">
       {/* min-h-screen flex flex-col, lo que hace indicar el minimo de altura del body sea la pantalla*/}
       <body className={`${inter.className} bg-gray-800 text-white min-h-screen flex flex-col`}>
-        <NavBar token={""} setToken={""} />
+        <NavBar token={""} setToken={""}  />
+        
+    
         {/*Esto hace que si el children es mas chico el footer por ejemplo s epueda ajustar a la pantalla*/}
         <main className="flex-grow">{children}</main>
         

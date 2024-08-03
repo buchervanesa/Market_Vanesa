@@ -1,15 +1,15 @@
 
 import React from 'react';
 import { FunctionFetch } from '@/utils/FunctionFetch';
-import { AuthProvider, useAuth } from '@/Context/AuthContext';
+
 import Card from '../../components/Card'
 import { ICardProps } from '@/components/Card/types';
 import ParentComponent from '../Category/page'
 import { Toaster } from 'sonner';
 
   const AllProducts: React.FC  = async () => {
-    // const products = await FunctionFetch("http://localhost:4000/products");
-    const products = await FunctionFetch("https://zkxnlxm3-4000.brs.devtunnels.ms/products");
+    const products = await FunctionFetch("http://localhost:4000/products");
+    // const products = await FunctionFetch("https://zkxnlxm3-4000.brs.devtunnels.ms/products");
     
   
     return (

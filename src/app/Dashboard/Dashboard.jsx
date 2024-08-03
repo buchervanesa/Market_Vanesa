@@ -1,13 +1,16 @@
+ /* eslint-disable @next/next/no-img-element */
 'use client'
 import  { useEffect } from 'react';
-import { useAuth} from '../../Context/AuthContext'; // Asegúrate de ajustar la ruta según tu estructura de carpetas
+import { useAuth} from '../../Context/AuthContext'; 
 import { getOrders } from '@/utils/FetchOrder';
 import { useState } from 'react';
 import { FaUserCircle, FaShoppingCart, FaSignOutAlt, FaHome, FaBars } from 'react-icons/fa';
 
+
 const Dashboard = () => {
   const [orders, setOrders] = useState([]);
   const { DataUser, token } = useAuth();
+  
 
   useEffect(() => {
     const fetchData = async () => {

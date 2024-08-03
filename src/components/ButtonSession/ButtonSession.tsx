@@ -5,19 +5,17 @@ import Link from "next/link";
 
 
 
-
 export const ButtonSession = () => {
  
     const {token, setToken, DataUser} = useAuth();
-  
 
-    
+
    const LogOutHandler = () => {
        setToken(null)
        localStorage.clear();
-      
-
-     
+       document.cookie =
+      "token=; path=/; expires=Thu, 01 Jan 1970 00:00:00 UTC; secure; samesite=strict;";
+        
    }
     return (
         

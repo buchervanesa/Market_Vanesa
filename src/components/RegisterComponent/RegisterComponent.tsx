@@ -1,8 +1,11 @@
-'use client';
+  /* eslint-disable @next/next/no-img-element */
+  'use client';
 import React, { ChangeEvent, FormEvent } from "react";
 import { useState } from "react";
 import { ValidateUserRegister } from "../auth/Errors";
 import { toast, Toaster } from 'sonner';
+import Image from "next/image";
+import { PATHROUTES } from "@/utils/PATHROUTE";
 
 const RegisterComponent = () => {
     const [register, setRegister] = useState({
@@ -13,7 +16,7 @@ const RegisterComponent = () => {
         phone: ""
     });
 
-    const [successMessage, setSuccessMessage] = useState<string | null>(null);
+    
     const [errors, setErrors] = useState<{ [key: string]: string }>({});
 
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -35,8 +38,8 @@ const RegisterComponent = () => {
 
         console.log('Form Data:', register);
 
-        // fetch('http://localhost:4000/users/register', {
-            fetch('https://zkxnlxm3-4000.brs.devtunnels.ms/users/register', {
+        fetch('http://localhost:4000/users/register', {
+            // fetch('https://zkxnlxm3-4000.brs.devtunnels.ms/users/register', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -45,7 +48,7 @@ const RegisterComponent = () => {
         })
         .then(response => {
             if (!response.ok) {
-                throw new Error('Error en la solicitud: prueba otro mail' + response.statusText);
+                throw new Error('Error en la solicitud: prueba otro mail' );
             }
             return response.json();
         })
@@ -61,7 +64,7 @@ const RegisterComponent = () => {
             });
        
             setTimeout(() => {
-              window.location.href = '/Login';
+              window.location.href = PATHROUTES.LOGIN;
                   }, 2000);
         })
         .catch((error) => {
@@ -80,6 +83,7 @@ const RegisterComponent = () => {
       ¡No esperes más y únete a nuestra comunidad hoy mismo! <br />
     </p><br />
     <div className="flex justify-center">
+  
       <img src="https://cdn-icons-png.flaticon.com/512/3200/3200751.png" alt="Promo Image" className="w-60 "/>
     </div>
   </div>
@@ -90,11 +94,7 @@ const RegisterComponent = () => {
                     position="top-center"
                     richColors />
                 <h2 className="text-2xl font-semibold text-center text-blue-700 mb-6">Registro</h2>
-                {successMessage && (
-                    <div className="mb-4 text-green-600 text-center">
-                        {successMessage}
-                    </div>
-                )}
+                
                 <div className="mb-4">
                     <label htmlFor="name" className="block text-gray-700">Nombre:</label>
                     <input
@@ -105,7 +105,7 @@ const RegisterComponent = () => {
                         onChange={handleChange}
                         className="text-black w-full p-2 mt-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-400"
                         placeholder="Nombre"
-                        required
+                        
                     />
                     {errors.name && <div className="text-red-500">{errors.name}</div>}
                 </div>
@@ -119,7 +119,7 @@ const RegisterComponent = () => {
                         onChange={handleChange}
                         className="text-black w-full p-2 mt-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-400"
                         placeholder="Correo electrónico"
-                        required
+                       
                     />
                     {errors.email && <div className="text-red-500">{errors.email}</div>}
                 </div>
@@ -133,7 +133,7 @@ const RegisterComponent = () => {
                         onChange={handleChange}
                         className="text-black w-full p-2 mt-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-400"
                         placeholder="Contraseña"
-                        required
+                      
                     />
                     {errors.password && <div className="text-red-500">{errors.password}</div>}
                 </div>
@@ -147,7 +147,7 @@ const RegisterComponent = () => {
                         onChange={handleChange}
                         className=" text-black w-full p-2 mt-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-400"
                         placeholder="Dirección"
-                        required
+                        
                     />
                     {errors.address && <div className="text-red-500">{errors.address}</div>}
                 </div>
@@ -161,12 +161,12 @@ const RegisterComponent = () => {
                         onChange={handleChange}
                         className="text-black w-full p-2 mt-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-400"
                         placeholder="Teléfono"
-                        required
+                   
                     />
                     {errors.phone && <div className="text-red-500">{errors.phone}</div>}
                 </div>
                 <button type="submit" className="w-full bg-indigo-500 text-white py-2 rounded-md hover:bg-indigo-600 transition duration-200">Registrarme</button>
-                {successMessage && <p className="text-green-500 text-sm">{successMessage}</p>}
+               
             </form>
         </div>
     );

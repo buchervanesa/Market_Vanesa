@@ -3,18 +3,18 @@
 import { useState } from 'react';
 import { ChangeEvent, FormEvent } from 'react';
 import { ValidateLogin} from '../auth/Errors';
-import { useEffect } from 'react';
 import { useAuth } from '@/Context/AuthContext';
 import {  toast, Toaster } from 'sonner';
+import { PATHROUTES } from '@/utils/PATHROUTE';
 
 export const Login = () => {
-  const { setToken, setUserData } = useAuth();
+  const { setUserData } = useAuth();
   const [formData, setFormData] = useState({
     email: '',
     password: ''
   });
   const [errors, setErrors] = useState<{ email: string; password: string }>({ email: '', password: '' });
-  const [successMessage, setSuccessMessage] = useState<string>('');
+ 
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -32,8 +32,8 @@ export const Login = () => {
     }
 
     try {
-      // const response = await fetch('http://localhost:4000/users/login', {
-        const response = await fetch('https://zkxnlxm3-4000.brs.devtunnels.ms/users/login', {
+      const response = await fetch('http://localhost:4000/users/login', {
+        // const response = await fetch('https://zkxnlxm3-4000.brs.devtunnels.ms/users/login', {
 
         method: 'POST',
         headers: {
@@ -43,7 +43,7 @@ export const Login = () => {
       });
 
       if (!response.ok) {
-        throw new Error('fallo en el incio de sesion');
+        throw new Error('contraseña o usuario incorrecto');
       }
 
       const json = await response.json();
@@ -51,14 +51,15 @@ export const Login = () => {
      
 
       localStorage.setItem('userToken', json.token);
+      document.cookie = `token=admin; path=/;`;
 
       toast.success('Inicio de sesión exitosa!');
       setTimeout(() => {
-        window.location.href = '/product';
+        window.location.href = PATHROUTES.PRODUCTS;
       }, 2000);
     } catch (error) {
 
-      toast.error('error al iniciar sesion:' + error);
+      toast.error('error al iniciar sesion: usuario o contraseña incorrecta');
     }
   };
 
@@ -90,7 +91,7 @@ export const Login = () => {
           id="password"
           name="password"
           placeholder="********"
-          required
+       
           value={formData.password}
           onChange={handleChange}
         />
@@ -100,7 +101,7 @@ export const Login = () => {
       <button className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button">
         <a href="../Register">No tengo una cuenta</a>
       </button>
-      {successMessage && <p className="text-green-500 text-sm">{successMessage}</p>}
+     
     </form>
   );
 };

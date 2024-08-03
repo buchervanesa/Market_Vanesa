@@ -1,8 +1,9 @@
+/* eslint-disable @next/next/no-img-element */
 import  React from 'react'
 import { ICardProps } from "../../components/Card/types";
-import { Card as MUICard, CardContent, CardMedia, Typography } from '@mui/material';
 import Link from 'next/link';
 import ButtonCard from '../ButtonCard/ButtonCard'
+import Image from 'next/image';
 
 
 export const Card: React.FC<ICardProps> = ({ id, name, price, description, image, stock, categoryId }) => {
@@ -12,7 +13,8 @@ export const Card: React.FC<ICardProps> = ({ id, name, price, description, image
  
 <div className="w-full max-w-xs  rounded-xl overflow-hidden shadow-lg bg-gray-100 text-black transition-transform transform hover:scale-105 hover:shadow-2xl flex flex-col">
   <div className="flex justify-center items-center h-40">
-    <Link href={`/product/${id}`}><img className="object-cover h-36 w-35 rounded-xl " src={image} alt={name} /></Link>
+    <Link href={`/product/${id}`}> <img className="object-cover h-36 w-35 rounded-xl " src={image}  width={140}
+  height={144}  alt={name} /></Link>
   </div>
   <div className="flex flex-col flex-1 p-6 text-center justify-between">
     <div>

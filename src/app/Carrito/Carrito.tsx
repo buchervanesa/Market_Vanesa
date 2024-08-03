@@ -1,9 +1,11 @@
+ /* eslint-disable @next/next/no-img-element */
 'use client';
 import React, { useState, useEffect } from 'react';
 import { useAuth } from '../../Context/AuthContext';
-import Iproduct from '@/Interfaces/Iproduct';
+
 import { CreateOrder } from '../../utils/FetchOrder';
 import {  toast, Toaster } from 'sonner';
+
 
 
 interface IProduct {
@@ -118,7 +120,3 @@ export default Cart;
 
 
 
-
-// function push(arg0: string) {
-//   throw new Error('Function not implemented.');
-// }

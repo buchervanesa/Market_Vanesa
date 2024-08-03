@@ -7,7 +7,3 @@ export interface ICardProps {
     stock: number;
     categoryId: number;
 }
-
-// export interface ICardListProps {
-//     cards: ICardProps[];
-// }
